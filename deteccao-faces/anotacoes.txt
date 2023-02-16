@@ -1,0 +1,47 @@
+DETECÇÃO DE FACES
+
+1 - Detecção de faces com Haatcascade e OpenCV
+2 - Detecção de faces com HOG e Dlib
+3 - Detecção de faces com CNN e Dlib
+4 - Detecção de faces pela webcam
+
+PIXELS
+
+Pixels são pontos em uma imagem, em resulmo o pixels pode ser considerado a menor informação disponível em uma imagem.
+
+Cada um dos pixels é composto por três canais que representam as 3 cores basicas que é o formato RGB.
+
+Trazendo a imagem para uma escala de cinza, os valores de R, G e B ficam sempre igual, em todos os pontos da imagem, e como eles são iguais só é nescessário armazenar um unico valor, em vez dos 3, 
+com isso a imagem acaba ficando mais leve.
+
+Ex.:
+
+Uma imagem 32x32 pixels tem 1024 pixels.
+O numero de valores armazenados é 32x32x3 que é igual a 3072 valores armazenados.
+
+Para uma imagem em escala de cinza, teremos:
+
+Uma imagem 32x32 pixels tem 1024 pixels.
+O numero de valores armazenados é 32x32x1 que é igual a 1024 valores armazenados.
+
+CLASSIFICADOR CASCADE (OpenCV)
+
+Para treinar um algoritmo para reconhecer faces precisamos de dois conjunto de imagem, o primeiro contendo muitas faces e outro conjunto de imagens que não são faces (cachorro, carros, arvores, etc).
+
+Logo na sequencia nos enviamos essas imagens para um algoritmo chamado AdaBoost Training (algoritmo famoso da aprendizado de maquina).
+
+Para um algoritmo aprender com as imagens nós temos esse conceito de Feature selection, ou seleção das caracteristicas, então teremos varios quadradinhos composto pela cor beanco e pela cor preta,
+lembrando que a cor branca é 255 e o preto é 0, e temos varias caracteristicas diferentes de quadradinhos, basicamentos cada quadradinho vai passara por toda a imagem e irá fazer um calculo matemático 
+para contar quantos pixels branco e quantos pixels pretos existem na imagem e é feito uma subtração, isso será feito para cada caracteristica de quadradinho, e como resultado teremos uma matriz com 
+cadaresultado dessas subtrações.
+
+Aplicando isso em uma imagem de 24x24 teremos um total de 160.000 combinações, então leva bastante tempo para treinar um algoritmo.
+
+Isso irá identificar padrões nas imagens, identificando padrões dos olhos, nariz, boca e assim por diante.
+
+Depois que o algoritmo esta treinado, quando todos os calculos matemáticos são executados, nós submetemos uma imagem e vamos enviar essa imagem para varios classificadores, por exemplo o c1 pode 
+ser expecialisado em desctar olhos, enquanto o c2 em bocas e assim por diante. Considerando que um desses classificadores não identifique o padrão da baca por exemplo, será retornado false e então 
+nenhuma detecção será encontradas, isso pode acontecer se estivermos trabalhando com faces de pessoas e faces de cachorros, o algoritmo pode chegar a conclusão de tanto os olhos dos cachorros e da 
+pessoas são similares, porem na proxima etapa o algoritmo vai tentar fazer a detecção do nariz e sabemos que são diferentes, logo o algoritmo irá retornar false para a face do cachorro.
+
+
