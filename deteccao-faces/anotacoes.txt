@@ -45,3 +45,15 @@ nenhuma detecção será encontradas, isso pode acontecer se estivermos trabalha
 pessoas são similares, porem na proxima etapa o algoritmo vai tentar fazer a detecção do nariz e sabemos que são diferentes, logo o algoritmo irá retornar false para a face do cachorro.
 
 
+# Parametros
+
+## scaleFactor
+
+Para melhorar o modelo para evitar os falsos positivos.
+
+O parâmetro é o scaleFactor, que indica a escala da imagem, o valor padrão é 1.1, pode mos fazer alguns testes para entender melhor o parâmetro, o valor minímo tem que ser maior que 1.
+
+Esse parâmetro é muito util quando temos faces muito pequenas na imagem. quando temos faces muito grande na imagem e a imagem for muito grande podemos tentar aumentar o parâmetro da escala.
+
+
+## 
