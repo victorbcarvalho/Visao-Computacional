@@ -56,4 +56,14 @@ O parâmetro é o scaleFactor, que indica a escala da imagem, o valor padrão é
 Esse parâmetro é muito util quando temos faces muito pequenas na imagem. quando temos faces muito grande na imagem e a imagem for muito grande podemos tentar aumentar o parâmetro da escala.
 
 
-## 
+## minNeighbors
+
+Numero mínimo de vizinhos para considerar uma face como sendo uma face.
+
+## minSize
+
+Qual é o tamanho minimo das faces para vc fazer a detecção.
+
+## maxSize
+
+Tamanho maximo das faces.
